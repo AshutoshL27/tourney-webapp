@@ -1,0 +1,53 @@
+<%- include('partials/header') %>
+<header class="p-3 mb-3 border-bottom">
+  <div class="container userbar">
+    <div class="flex-shrink-0 dropdown">
+      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="img/profile.png" alt="mdo" width="45" height="45" class="rounded-circle">
+        <span><%= username %></span>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="/createevent">Create Event</a></li>
+        <li><a class="dropdown-item" href="/myevents">My Events</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+      </ul>
+    </div> 
+  </div>
+</header>
+
+<div class="container mt-5">
+  <h1 class="headings">Registrations for: <b><%=eventname%></b></h1>
+  
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% var i=1; %> 
+      <%  registrations.forEach(function(registration){ %>
+      <tr>
+        <th scope="row"><%= i %> </th>
+        <td><%= registration.fname %></td>
+        <td><%= registration.lname %></td>
+        <td><%= registration.age %></td>
+        <td><%= registration.gender %></td>
+        <td><%= registration.email %></td>
+        <td><%= registration.contact %></td>
+      </tr>
+      <% i++; %> 
+      <% }); %>
+    </tbody>
+  </table>
+
+</div>
+
+<%- include('partials/footer') %>

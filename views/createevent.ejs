@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+<header class="p-3 mb-3 border-bottom">
+  <div class="container userbar">
+    <div class="flex-shrink-0 dropdown">
+      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="img/profile.png" alt="mdo" width="45" height="45" class="rounded-circle">
+        <span><%= username %></span>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="/createevent">Create Event</a></li>
+        <li><a class="dropdown-item" href="/myevents">My Events</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+      </ul>
+    </div> 
+  </div>
+</header>
+
+<div class="container mt-5">
+  <h1 class="headings">Create Event</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <form action="/myevents" method="post">
+            <div class="form-group">
+              <label for="eventname">Event Name</label>
+              <input type="text" class="form-control" name="eventname" required>
+            </div>
+            <div class="form-group">
+              <label for="datetime">Date & Time</label>
+              <input type="datetime-local" class="form-control" name="datetime" required>
+            </div>
+            <div class="form-group">
+              <label for="eligibility">Eligibility</label>
+              <input type="text" class="form-control" name="eligibility" required>
+            </div>
+            <div class="form-group">
+              <label for="modeofconduct">Mode of Conduct</label>
+              <input type="text" class="form-control" name="modeofconduct" required>
+            </div>
+            <div class="form-group">
+              <label for="venue">Venue/Link</label>
+              <input type="text" class="form-control" name="venue" required>
+            </div>
+            <div class="form-group">
+              <label for="fees">Fees</label>
+              <input type="text" class="form-control" name="fees">
+            </div>
+            <div class="form-group">
+              <label for="description">Description of Event</label>
+              <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="host">Host</label>
+              <input type="text" class="form-control" name="host" required>
+            </div>
+            <div class="form-group">
+              <label for="hostcontact">Host Contact</label>
+              <input type="number" class="form-control" name="hostcontact" required>
+            </div>
+            <div class="form-group">
+              <label for="hostemail">Host Email</label>
+              <input type="email" class="form-control" name="hostemail" required>
+            </div>
+            <input type="hidden" class="form-control" name="createdby" value="<%=username%>">
+            <button type="submit" class="submit-btn btn btn-dark">Create</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<%- include('partials/footer') %>

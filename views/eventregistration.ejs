@@ -1,0 +1,64 @@
+<%- include('partials/header') %>
+<header class="p-3 mb-3 border-bottom">
+  <div class="container userbar">
+    <div class="flex-shrink-0 dropdown">
+      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="img/profile.png" alt="mdo" width="45" height="45" class="rounded-circle">
+        <span><%= username %></span>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="/createevent">Create Event</a></li>
+        <li><a class="dropdown-item" href="/myevents">My Events</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+      </ul>
+    </div> 
+  </div>
+</header>
+
+<div class="container mt-5">
+  <h1 class="headings">Register for the Event</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /register route -->
+          <form action="/events" method="post">
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input type="text" class="form-control" name="fname" required>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <input type="text" class="form-control" name="lname" required>
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" class="form-control" name="age" required>
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender(M/F/Other)</label>
+              <input type="text" class="form-control" name="gender" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="contact">Contact Number</label>
+              <input type="number" class="form-control" name="contact" required>
+            </div>
+            <input type="hidden" class="form-control" name="eventname" value="<%=eventname%>">
+            <button type="submit" class="submit-btn btn btn-dark">Register</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('partials/footer') %>

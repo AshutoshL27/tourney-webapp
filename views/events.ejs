@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+
+<header class="p-3 mb-3 border-bottom">
+  <div class="container userbar">
+    <div class="flex-shrink-0 dropdown">
+      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="img/profile.png" alt="mdo" width="45" height="45" class="rounded-circle">
+        <span><%= username %></span>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="/createevent">Create Event</a></li>
+        <li><a class="dropdown-item" href="/myevents">My Events</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+      </ul>
+    </div> 
+  </div>
+</header>
+
+<h1 class="headings">All Events</h1>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 lg-3">
+      <%  events.forEach(function(event){ %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          <div class="card-body">
+            <p class="card-text"><h3><%= event.eventname %></h3></p>
+            <p class="card-text"><b>Date/Time:</b><%= event.datetime %></p>
+            <p class="card-text"><b>Eligibility:</b><%= event.eligibility %></p>
+            <p class="card-text"><b>Mode of Conduct:</b><%=  event.modeofconduct%></p>
+            <p class="card-text"><b>Venue/Link:</b><%= event.venue %></p>
+            <p class="card-text"><b>Fees:</b><%= event.fees %></p>
+            <p class="card-text"><b>Description:</b><%= event.description %></p>
+            <p class="card-text"><b>Host:</b><%= event.host %></p>
+            <p class="card-text"><b>Host Contact:</b><%= event.hostcontact %></p>
+            <p class="card-text"><b>Host Email:</b><%= event.hostemail %></p>
+            <p class="card-text"><b>Created By:</b><%= event.createdby %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/eventregistration" method="post">
+                  <input type="hidden" name="eventname" value="<%= event.eventname %>">
+                  <button type="submit" class="btn btn-md btn-outline-secondary">Register</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
